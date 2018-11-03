@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'chat', to:'chat#index'
   root to: 'home#lp'
   devise_for :users
   get 'home', to:'home#index'
