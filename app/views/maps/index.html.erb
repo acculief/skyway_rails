@@ -94,7 +94,7 @@
       <div class="modal-header">
         <span class="media-left">
           <!-- <img class="p-user_icon" src="/images/user.jpg"> -->
-          
+
         </span>
         <div class="media-body u-pl30">
       		<h4 id="waiting-modal-message" class="media-heading u-pt30"><span>リクエストを送信中・・・</span></h4>
@@ -182,7 +182,7 @@ function sendRequest(destUserId) {
     type: 'request',
     userId: (gon.user_id),
     destUserId: destUserId,
-    name: '(gon.user_name)'
+    name: (gon.user_name)
   }));
   $('#waiting-modal-message').text('Calling ' + names[destUserId] + ' ...');
   $('#waiting-modal-btn-cancel').click(function () {
@@ -235,11 +235,11 @@ setTimeout(function () {
       room.send(JSON.stringify({
         type: 'location',
         userId: (gon.user_id),
-        name: '(gon.user_name)',
+        name: (gon.user_name),
         position: convertPosition(position),
         userType: '1'
       }));
-      updateMarker((gon.user_id), '(gon.user_name)', convertPosition(position), 'me');
+      updateMarker((gon.user_id), (gon.user_name), convertPosition(position), 'me');
     },
     function (error) {
       console.log('Failed to get current position.');
