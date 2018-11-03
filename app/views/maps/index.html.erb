@@ -267,7 +267,7 @@ setTimeout(function () {
         // ガイド依頼の呼び出しをサーバーから受け取った時(呼び出しモーダルを表示)
         if (d.destUserId == (gon.user_id)) {
           $('#calling-modal-message').text(d.name + ' scouted you!!');
-          $('#calling-modal-message').html(`<p><img src="d.image.url" alt=""/>${d.name}さんが読んでいます！</p>`);
+          $('#calling-modal-message').html(`<img src="d.image.url" alt=""/>スカウトが来ています!`);
           $('#calling-modal-btn-decline').click(function () {
             declineRequest(d.userId);
           });
