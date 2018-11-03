@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   # ユーザー新規登録時（フォームでユーザー情報と住所を入力するところ）
   def index
-    @user = current_user
   end
 
   def edit
