@@ -20,6 +20,10 @@ gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'carrierwave',             '1.2.2'
 gem 'mini_magick',             '4.7.0'
+gem 'gon'
+gem 'bootstrap', '~> 4.1.1'
+gem 'twitter-bootstrap-rails'
+
 
 
 group :development do
@@ -40,4 +44,3 @@ end
 gem 'sqlite3', groups: %w(test development), require: false
 
 gem 'pg', groups: %w(production), require: false
-
