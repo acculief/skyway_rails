@@ -51,8 +51,12 @@ const peer = new Peer({
 
 // 入室
 let room = 'location';
+let user = {
+  name: (gon.user_name)
+}
 //$('#join').click(function(){
 $(setTimeout(function () {
+  console.log(user)
   room = peer.joinRoom( room, { mode: 'sfu' });
   chatlog('The chat has been started.');
 
@@ -60,12 +64,12 @@ $(setTimeout(function () {
   $('#send').click(function(){
      var msg = $('#msg').val();
      room.send(msg);
-     chatlog('You > ' + msg);
+     chatlog(`${user.name} > ` + msg);
   });
 
   // チャットを受信
   room.on('data', function(data){
-    chatlog('Guide > ' + data.data); // data.src = 送信者のpeerid, data.data = 送信されたメッセージ
+    chatlog(`${user.name} > ` + data.data); // data.src = 送信者のpeerid, data.data = 送信されたメッセージ
   });
 }, 2000));
 
