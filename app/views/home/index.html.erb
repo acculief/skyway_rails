@@ -4,3 +4,5 @@
 <%else%>
   <%= link_to "LOGIN", new_user_session_path %>
 <%end%>
+
+<%= image_tag current_user.image.url %>

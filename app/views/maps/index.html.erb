@@ -59,10 +59,10 @@
   }
 </style>
 <!-- Button trigger modal -->
-<button type="button" id="btn-calling-modal" class="btn btn-primary" data-toggle="modal" data-target="#calling-modal" style="display:none">
+<button type="button" id="btn-calling-modal" class="btn btn-primary" data-toggle="modal" data-target="#calling-modal" style="display:block">
   Calling modal
 </button>
-<button type="button" id="btn-waiting-modal" class="btn btn-primary" data-toggle="modal" data-target="#waiting-modal" style="display:none">
+<button type="button" id="btn-waiting-modal" class="btn btn-primary" data-toggle="modal" data-target="#waiting-modal" style="display:block">
   Waiting modal
 </button>
 
@@ -73,7 +73,7 @@
       <div class="modal-header">
         <span class="media-left">
           <!-- <img class="p-user_icon" src="/images/user.jpg"> -->
-          画像
+          <!-- <%= image_tag current_user.image.url %> -->
         </span>
         <div class="media-body u-pl30">
       		<h4 id="calling-modal-message" class="media-heading u-pt30"></h4>
@@ -95,10 +95,11 @@
       <div class="modal-header">
         <span class="media-left">
           <!-- <img class="p-user_icon" src="/images/user.jpg"> -->
-          画像
+          <span><%= image_tag current_user.image.url %></span>
+          </%>
         </span>
         <div class="media-body u-pl30">
-      		<h4 id="waiting-modal-message" class="media-heading u-pt30"></h4>
+      		<h4 id="waiting-modal-message" class="media-heading u-pt30"><span>リクエストを送信中・・・</span></h4>
         </div>
       </div>
       <div id="calling-modal-menu" class="modal-body text-center">
@@ -183,7 +184,8 @@ function sendRequest(destUserId) {
     type: 'request',
     userId: (gon.user_id),
     destUserId: destUserId,
-    name: '(gon.user_name)'
+    name: '(gon.user_name)',
+    image: '(gon.user_image)'
   }));
   $('#waiting-modal-message').text('Calling ' + names[destUserId] + ' ...');
   $('#waiting-modal-btn-cancel').click(function () {
@@ -237,6 +239,7 @@ setTimeout(function () {
         type: 'location',
         userId: (gon.user_id),
         name: '(gon.user_name)',
+        image: (gon.user_image)
         position: convertPosition(position),
         userType: '1'
       }));
@@ -255,7 +258,7 @@ setTimeout(function () {
     switch (d.type) {
       case 'location':
         // 位置情報をサーバーから受け取った時(地図上のマーカーを更新)
-        updateMarker(d.userId, d.name, d.position, d.userType);
+        updateMarker(d.userId, d.name, d.position, d.userType, d.image);
         break;
       case 'disconnection':
         // 他の人の接続切れをサーバーから受け取った時(地図上のマーカーを削除)
@@ -264,7 +267,7 @@ setTimeout(function () {
       case 'request':
         // ガイド依頼の呼び出しをサーバーから受け取った時(呼び出しモーダルを表示)
         if (d.destUserId == (gon.user_id)) {
-          $('#calling-modal-message').text(d.name + ' scouted you!!');
+          $('#calling-modal-message').text(d.name + ' scouted you!!' + d.image);
           $('#calling-modal-btn-decline').click(function () {
             declineRequest(d.userId);
           });

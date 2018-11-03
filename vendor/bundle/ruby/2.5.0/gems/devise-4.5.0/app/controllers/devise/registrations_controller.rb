@@ -150,7 +150,7 @@ class Devise::RegistrationsController < DeviseController
   end
 
   def configure_permitted_parameters
-   devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:status, :url, :infomation])
-   devise_parameter_sanitizer.permit(:account_update, keys: [:name,:status, :url, :infomation])
+   devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:status, :url, :infomation, :image, :image_cache])
+   devise_parameter_sanitizer.permit(:account_update, keys: [:name,:status, :url, :infomation, :image, :image_cache])
  end
 end
