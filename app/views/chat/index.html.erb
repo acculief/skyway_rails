@@ -65,10 +65,11 @@ $(setTimeout(function () {
      var msg = $('#msg').val();
      // room.send(msg);
      room.send(JSON.stringify({
+       var msg = $('#msg').val();
        userId: (gon.user_id),
        name: '(gon.user_name)',
        userType: '1'
-       msg: msg
+       msg: (msg)
      }));
      chatlog(`${user.name} > ` + msg);
   });
