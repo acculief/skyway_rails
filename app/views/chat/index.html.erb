@@ -63,13 +63,20 @@ $(setTimeout(function () {
   // チャットを送信
   $('#send').click(function(){
      var msg = $('#msg').val();
-     room.send(msg);
+     // room.send(msg);
+     room.send(JSON.stringify({
+       userId: (gon.user_id),
+       name: '(gon.user_name)',
+       userType: '1'
+       msg: msg
+     }));
      chatlog(`${user.name} > ` + msg);
   });
 
   // チャットを受信
   room.on('data', function(data){
-    chatlog(`${user.name} > ` + data.data); // data.src = 送信者のpeerid, data.data = 送信されたメッセージ
+    var d = JSON.parse(data.data);
+    chatlog(`${d.name} > ` + d.msg); // data.src = 送信者のpeerid, data.data = 送信されたメッセージ
   });
 }, 2000));
 
