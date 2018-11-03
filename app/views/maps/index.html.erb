@@ -182,7 +182,7 @@ function sendRequest(destUserId) {
     type: 'request',
     userId: (gon.user_id),
     destUserId: destUserId,
-    name: (gon.user_name)
+    name: (gon.user_name),
   }));
   $('#waiting-modal-message').text('Calling ' + names[destUserId] + ' ...');
   $('#waiting-modal-btn-cancel').click(function () {
