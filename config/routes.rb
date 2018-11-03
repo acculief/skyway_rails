@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'chat', to:'chat#index'
   root to: 'home#lp'
-  devise_for :users, only: [:sign_in, :sign_out, :session]
+  devise_for :users
   get 'home', to:'home#index'
   get 'maps', to:'maps#index'
   get 'users', to:'users#index'
