@@ -5,6 +5,7 @@ ruby '2.5.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
+gem 'devise'
 gem 'puma'
 gem 'sass-rails'
 gem 'uglifier'
