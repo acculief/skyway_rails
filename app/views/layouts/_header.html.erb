@@ -6,9 +6,7 @@
         -webkit-overflow-scrolling: auto;
         overflow-scrolling: auto;
     }
-    .navbar_brand{
-      width: auto;
-    }
+
     /* navbar 全体の背景色とボーダーカラー */
     .navbar-default {
     background-color: #FFE53B;
@@ -120,9 +118,6 @@
     color: #ffffff;;
     font-family: 'Oswald', sans-serif;
     font-size: 1.1em;
-    width: auto;
-    position: absolute;
-    left: 45%;
     }
     .navbar-default .navbar-brand:focus,
     .navbar-default .navbar-brand:hover {
@@ -179,22 +174,21 @@
     }
   </style>
 <!-- ページのコンテンツすべてをwrapする（フッター以外） -->
-  <!-- <div id="wrap"> -->
+  <div id="wrap">
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <a class="navbar-brand navbar-brand-center" href="/"><span>You Scriber</span></a>
+          <a class="navbar-brand navbar-brand-center " href="/"><span>You Subscriber</span></a>
         </div>
         <div class="navbar-text navbar-right text-right" style="padding-right:10px">
           <span style="color:white">
-            <% if user_signed_in? %>
+            <!-- <% if user_signed_in? %>
               <%= link_to "LOGOUT", destroy_user_session_path, method: :delete%>
             <%else%>
               <%= link_to "LOGIN", new_user_session_path %>
-            <%end%>
+            <%end%> -->
           </span>
         </div>
       </div><!-- /.container-fluid -->
     </nav>
-  <!-- </div> -->

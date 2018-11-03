@@ -2,8 +2,8 @@
   .message_bar{
     /* position: absolute;
     bottom: 60px; */
-    padding-top: 60px;
-    width: 320px;
+    padding-top: 160px;
+    /* width: 320px; */
     text-align: center;
   }
   #chatLog{
@@ -28,13 +28,13 @@
   }
 </style>
 <section class="u-pd-lr30">
-{*
-  room: <input type="text" id="roomName"> <button id="join">入室</button><button id="leave">退室</button>
-  <hr>
-*}
+  <div style="display:none">
+    room: <input type="text" id="roomName"> <button id="join">入室</button><button id="leave">退室</button>
+    <hr>
+  </div>
   <div id="chatLog">
   </div>
-  <div class="message_bar">
+  <div class="message_bar col-sm-12 col-md-12">
     <input type="text" id="msg" placeholder="message"> <button id="send" class="p-button-modal__open">Send</button>
   </div>
 </section>
@@ -50,7 +50,7 @@ const peer = new Peer({
 });
 
 // 入室
-let room = location;
+let room = 'location';
 //$('#join').click(function(){
 $(setTimeout(function () {
   room = peer.joinRoom( room, { mode: 'sfu' });
