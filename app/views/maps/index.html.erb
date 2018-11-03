@@ -162,7 +162,7 @@ function updateMarker(userId, name, position, type, image) {
     label: (type == 'me') ? { text: 'You', color:'#FFFFFF', fontSize: '10px' } : null });
     if (type != 'me') {
       var infoWindow  = new google.maps.InfoWindow({ // 吹き出しの追加
-        content: '<div class="sample">'+'<img class="calling-image" src="image.url" alt="">' + name + '<button class="btn btn-sm btn-primary btn-block" onclick="sendRequest(' + userId + ')">Request!</button></div>' // 吹き出しに表示する内容
+        content: '<div class="sample">'+'<img  src="image.url" alt="">' + name + '<button class="btn btn-sm btn-primary btn-block" onclick="sendRequest(' + userId + ')">Request!</button></div>' // 吹き出しに表示する内容
       });
       markers[userId].addListener('click', function() { // マーカーをクリックしたとき
         infoWindow.open(map, markers[userId]); // 吹き出しの表示
@@ -267,7 +267,7 @@ setTimeout(function () {
         // ガイド依頼の呼び出しをサーバーから受け取った時(呼び出しモーダルを表示)
         if (d.destUserId == (gon.user_id)) {
           $('#calling-modal-message').text(d.name + ' scouted you!!');
-          $('#calling-modal-message').html(`<img class="calling-image" src="d.image.url" alt=""><p>d.nameさんが読んでいます！</p>`);
+          $('#calling-modal-message').html(`<img src="d.image.url" alt=""/><p>${d.name}さんが読んでいます！</p>`);
           $('#calling-modal-btn-decline').click(function () {
             declineRequest(d.userId);
           });
